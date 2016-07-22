@@ -16,8 +16,8 @@ public class Mainwithoutauth {
 	private static String first_url = "http://api.stackexchange.com/2.2/%s?site=stackoverflow&type=jsontext&key=lYUczCc)*Rgha4FEIJ4t*Q((";
 	private static String opciones = " 1. Get the tags on the site. \n 2. Get tags by their names. \n 3. Get the tags that only moderators can use"
 			+ "\n 4. Get the tags that fulfill required tag constraints. \n 5. Get all the tag synonyms. \n 6. Get frequently asked questions in a set of tags. \n"
-			+ " 7. Get related tags, based on common tag pairings. \n 8. Get the synonyms for a specific set of tags. \n 9. Get the top answer posters in a specific tag, either in the last month or for all time. \n"
-			+ " 10. Get the top question askers in a specific tag, either in the last month or for all time. \n 11. Get the wiki entries for a set of tags.";
+			+ " 7. Get related tags, based on common tag pairings. \n 8. Get the synonyms for a specific set of tags. \n 9. Get the top answer posters in a specific tag in the last month. \n"
+			+ " 10. Get the top answer posters in a specific tag for all time \n 11. Get the top question askers in a specific tag, either in the last month or for all time. \n 12. Get the wiki entries for a set of tags.";
 	private static String get_url = "";
 	
 	public static void main(String[] args) throws IOException {
@@ -34,6 +34,28 @@ public class Mainwithoutauth {
 			case "3": get_url = String.format(first_url, "tags/moderator-only");
 					break;
 			case "4": get_url = String.format(first_url, "tags/required");
+					break;
+			case "5": get_url = String.format(first_url, "tags/synonyms");
+					break;
+			case "6": System.out.println ("Write the tag name");
+					final Scanner in1 = new Scanner(System.in, "UTF-8");
+					String name1 = in1.nextLine();
+					get_url = String.format(first_url, "tags/{"+name1+"}/faq");
+					break;
+			case "7": System.out.println ("Write the tag name");
+					final Scanner in2 = new Scanner(System.in, "UTF-8");
+					String name2 = in2.nextLine();
+					get_url = String.format(first_url, "tags/{"+name2+"}/related");
+					break;
+			case "8": System.out.println ("Write the tag name");
+					final Scanner in3 = new Scanner(System.in, "UTF-8");
+					String name3 = in3.nextLine();
+					get_url = String.format(first_url, "tags/{"+name3+"}/synonyms");
+					break;
+			case "9": System.out.println ("Write the tag name");
+					final Scanner in4 = new Scanner(System.in, "UTF-8");
+					String name4 = in4.nextLine();
+					get_url = String.format(first_url, "tags/{"+name4+"}/synonyms");
 					break;
 			default: System.out.println("You didn't choose a valid option");
 		}
