@@ -14,10 +14,10 @@ import javax.net.ssl.HttpsURLConnection;
 public class Mainwithoutauth {
 
 	private static String first_url = "http://api.stackexchange.com/2.2/%s?site=stackoverflow&type=jsontext&key=lYUczCc)*Rgha4FEIJ4t*Q((";
-	private static String opciones = "1. Get the tags on the site. \n 2. Get tags by their names. \n 3. Get the tags that only moderators can use"
+	private static String opciones = " 1. Get the tags on the site. \n 2. Get tags by their names. \n 3. Get the tags that only moderators can use"
 			+ "\n 4. Get the tags that fulfill required tag constraints. \n 5. Get all the tag synonyms. \n 6. Get frequently asked questions in a set of tags. \n"
 			+ " 7. Get related tags, based on common tag pairings. \n 8. Get the synonyms for a specific set of tags. \n 9. Get the top answer posters in a specific tag, either in the last month or for all time. \n"
-			+ "10. Get the top question askers in a specific tag, either in the last month or for all time. \n 11. Get the wiki entries for a set of tags.";
+			+ " 10. Get the top question askers in a specific tag, either in the last month or for all time. \n 11. Get the wiki entries for a set of tags.";
 	private static String get_url = "";
 	
 	public static void main(String[] args) throws IOException {
@@ -30,6 +30,10 @@ public class Mainwithoutauth {
 					final Scanner in = new Scanner(System.in, "UTF-8");
 					String name = in.nextLine();
 					get_url = String.format(first_url, "tags/{"+name+"}/info");
+					break;
+			case "3": get_url = String.format(first_url, "tags/moderator-only");
+					break;
+			case "4": get_url = String.format(first_url, "tags/required");
 					break;
 			default: System.out.println("You didn't choose a valid option");
 		}
