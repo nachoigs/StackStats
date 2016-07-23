@@ -17,7 +17,8 @@ public class Mainwithoutauth {
 	private static String opciones = " 1. Get the tags on the site. \n 2. Get tags by their names. \n 3. Get the tags that only moderators can use"
 			+ "\n 4. Get the tags that fulfill required tag constraints. \n 5. Get all the tag synonyms. \n 6. Get frequently asked questions in a set of tags. \n"
 			+ " 7. Get related tags, based on common tag pairings. \n 8. Get the synonyms for a specific set of tags. \n 9. Get the top answer posters in a specific tag in the last month. \n"
-			+ " 10. Get the top answer posters in a specific tag for all time \n 11. Get the top question askers in a specific tag, either in the last month or for all time. \n 12. Get the wiki entries for a set of tags.";
+			+ " 10. Get the top answer posters in a specific tag for all time \n 11. Get the top question askers in a specific tag in the last month.\n "
+			+ " 12. Get the top question askers in a specific tag for all the time \n 13. Get the wiki entries for a set of tags.";
 	private static String get_url = "";
 	
 	public static void main(String[] args) throws IOException {
@@ -55,7 +56,27 @@ public class Mainwithoutauth {
 			case "9": System.out.println ("Write the tag name");
 					final Scanner in4 = new Scanner(System.in, "UTF-8");
 					String name4 = in4.nextLine();
-					get_url = String.format(first_url, "tags/{"+name4+"}/synonyms");
+					get_url = String.format(first_url, "tags/{"+name4+"}/top-answerers/month");
+					break;
+			case "10": System.out.println ("Write the tag name");
+					final Scanner in5 = new Scanner(System.in, "UTF-8");
+					String name5 = in5.nextLine();
+					get_url = String.format(first_url, "tags/{"+name5+"}/top-answerers/all_time");
+					break;
+			case "11": System.out.println ("Write the tag name");
+					final Scanner in6 = new Scanner(System.in, "UTF-8");
+					String name6 = in6.nextLine();
+					get_url = String.format(first_url, "tags/{"+name6+"}/top-askers/month");
+					break;
+			case "12": System.out.println ("Write the tag name");
+					final Scanner in7 = new Scanner(System.in, "UTF-8");
+					String name7 = in7.nextLine();
+					get_url = String.format(first_url, "tags/{"+name7+"}/top-askers/all_time");
+					break;
+			case "13": System.out.println ("Write the tag name");
+					final Scanner in8 = new Scanner(System.in, "UTF-8");
+					String name8 = in8.nextLine();
+					get_url = String.format(first_url, "tags/{"+name8+"}/wikis");
 					break;
 			default: System.out.println("You didn't choose a valid option");
 		}
