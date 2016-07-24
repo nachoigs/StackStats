@@ -17,7 +17,7 @@ public class Mainwithoutauth {
 	private static String opciones = " 1. Get the tags on the site. \n 2. Get tags by their names. \n 3. Get the tags that only moderators can use"
 			+ "\n 4. Get the tags that fulfill required tag constraints. \n 5. Get all the tag synonyms. \n 6. Get frequently asked questions in a set of tags. \n"
 			+ " 7. Get related tags, based on common tag pairings. \n 8. Get the synonyms for a specific set of tags. \n 9. Get the top answer posters in a specific tag in the last month. \n"
-			+ " 10. Get the top answer posters in a specific tag for all time \n 11. Get the top question askers in a specific tag in the last month.\n "
+			+ " 10. Get the top answer posters in a specific tag for all time \n 11. Get the top question askers in a specific tag in the last month.\n"
 			+ " 12. Get the top question askers in a specific tag for all the time \n 13. Get the wiki entries for a set of tags.";
 	private static String get_url = "";
 	
@@ -80,7 +80,15 @@ public class Mainwithoutauth {
 					break;
 			default: System.out.println("You didn't choose a valid option");
 		}
-		getInformation(get_url);
+		for (int i = 1; i<100;i++){
+			getInformation(get_url+"&page="+i);
+			System.out.println("Press enter to next page");
+			Scanner inenter = new Scanner(System.in);
+			inenter.nextLine();
+		}
+		
+		
+		
 		
 	}
 	
